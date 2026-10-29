@@ -3,6 +3,9 @@
 Five generations of automated attacker against one guarded-secret lab, plus the
 human solves that beat them, with every probe logged.
 
+<img width="1376" height="768" alt="warden-8" src="https://github.com/user-attachments/assets/96897ae8-7db5-42b9-882b-4b28c7a7066d" />
+
+
 The target is **the Warden**: an 8-gate lab I built and run for
 live workshops. Each gate guards one password behind a stacked set of
 defenses: persona refusals, input filters, output filters and moderation.
