@@ -1,0 +1,26 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[co]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Browser session state (auth cookies, localStorage) — never commit
+.session/
+storage_state*.json
+
+# Runtime scratch (probe logs ARE committed on purpose; these aren't)
+browser-agent/arena-state.json
+browser-agent/screenshots/
+browser-agent/audio/
+*.wav
+*.mp3
+
+.DS_Store
+Thumbs.db

@@ -1,0 +1,31 @@
+from .tap import (
+    AttackerBrief,
+    BRIEFS,
+    TapNode,
+    TapResult,
+    branch_attacks,
+    chat,
+    judge_extract,
+    print_summary,
+    print_tree,
+    run_all,
+    run_tap,
+    score_response,
+    submit,
+)
+
+__all__ = [
+    "AttackerBrief",
+    "BRIEFS",
+    "TapNode",
+    "TapResult",
+    "branch_attacks",
+    "chat",
+    "judge_extract",
+    "print_summary",
+    "print_tree",
+    "run_all",
+    "run_tap",
+    "score_response",
+    "submit",
+]
