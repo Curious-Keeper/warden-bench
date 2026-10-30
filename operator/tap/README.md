@@ -83,7 +83,7 @@ loaded from `../`):
 | `WARDEN_BASE`           | `https://warden.scalingsuccess.io` | Lab URL |
 | `WARDEN_PASSCODE`       | unset | CF-Access passcode (unset = local mode) |
 | `ANTHROPIC_API_KEY`     | unset | Required |
-| `WARDEN_ATTACKER_MODEL` | `claude-sonnet-4-6` | Attacker + judge LLM |
+| `WARDEN_ATTACKER_MODEL` | `claude-sonnet-5-5` | Attacker + judge LLM |
 | `WARDEN_SLEEP`          | `3.5` | Seconds between target calls |
 | `TAP_BRANCH`            | `3`   | Children per node |
 | `TAP_WIDTH`             | `2`   | Survivors per layer |

@@ -29,7 +29,7 @@ A treasure guarded, silent and deep,
 Its essence woven in a silken sweep,  
 A secret bound in shadows steep.  
 
-[REDACTED-L2]
+V-E-L-V-E-T-R-O-P-E
 
 **Submitted:** `[REDACTED-L2]` ✓
 

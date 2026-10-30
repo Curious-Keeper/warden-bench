@@ -1,11 +1,12 @@
 # Red-Team & Jailbreak Tooling — Landscape
 
 Where this project's harness sits relative to production red-team tooling, with
-sources for further reading. Generated as background notes for the DC704 workshop — not a survey, not exhaustive.
+sources for further reading. Generated as background notes for the workshop
+CFP — not a survey, not exhaustive.
 
 ## What this project's harness is
 
-The notebook [`warden-operator.ipynb`](warden-operator.ipynb) is a textbook
+The notebook in [operator/](operator/) is a textbook
 implementation of **PAIR** (Prompt Automatic Iterative Refinement, Chao et
 al. 2023). One attacker LLM, one judge LLM, linear iteration with feedback.
 That's the academic baseline most modern red-team tools build on.
@@ -13,12 +14,12 @@ That's the academic baseline most modern red-team tools build on.
 Three companion modules live alongside the notebook and can be driven from
 the CLI or imported into the notebook:
 
-- [`tap/`](tap/) — **TAP** (Tree of
+- [`operator/tap/`](operator/tap/) — **TAP** (Tree of
   Attacks with Pruning, Mehrotra et al. 2023). Tree-search variant of PAIR.
-- [`gap/`](gap/) — **GAP** (Graph of
+- [`operator/gap/`](operator/gap/) — **GAP** (Graph of
   Attacks with Pruning, Bagdasaryan et al. 2025, EMNLP-Industry). Successor
   to TAP that shares insights from pruned branches across the whole graph.
-- [`crescendo/`](crescendo/) —
+- [`operator/crescendo/`](operator/crescendo/) —
   **Crescendo** (Russinovich et al. 2024). Multi-turn benign-to-escalation
   conversation rather than single-shot prompts.
 
@@ -55,21 +56,21 @@ and a DeepTeam-inspired probe/seed extension.
 
 - **TAP** (Tree of Attacks with Pruning, Mehrotra et al. 2023) — branching
   + pruning. ~5–10× more efficient than PAIR.
-  Implemented at [`tap/tap.py`](tap/tap.py).
+  Implemented at [`tap/tap.py`](operator/tap/tap.py).
 - **GAP** (Graph of Attacks with Pruning, Bagdasaryan et al. 2025,
   EMNLP-Industry) — direct successor to TAP. Replaces independent trees
   with a *shared graph* so insights from pruned branches transfer to
   surviving siblings on the next layer. Higher success rate + better
   stealth than TAP. Implemented at
-  [`gap/gap.py`](gap/gap.py).
+  [`gap/gap.py`](operator/gap/gap.py).
 - **Crescendo** (Russinovich, Salem, Eldan 2024) — multi-turn attack that
   starts benign and escalates one step per turn; the warden's prior
   compliance becomes leverage on the next turn. Implemented at
-  [`crescendo/crescendo.py`](crescendo/crescendo.py).
+  [`crescendo/crescendo.py`](operator/crescendo/crescendo.py).
 - **APRT** (Wang et al. 2025, COLING) — Automated Progressive Red Teaming.
   Hides the actual extraction inside a multi-step request whose individual
   sub-asks are benign. Seed patterns added to the corpus via
-  [`deepteam_extras.py`](deepteam_extras.py).
+  [`deepteam_extras.py`](operator/deepteam_extras.py).
 - **STAR** (Strategy-driven Automatic Jailbreak Red-teaming, ICLR 2026) —
   moves exploration into the model's latent activation space to avoid
   "strategy collapse." Not implemented here (white-box requirement).

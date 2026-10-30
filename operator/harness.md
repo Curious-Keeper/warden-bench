@@ -106,7 +106,7 @@ list with purposes lives in [`.env.example`](.env.example).
 
 | Var | Default | Purpose |
 |---|---|---|
-| `WARDEN_ATTACKER_MODEL` | `claude-sonnet-4-6` | Attacker + judge LLM. Bump to `claude-opus-4-7` for harder L7/L8; drop to `claude-haiku-4-5` for cheap batches. |
+| `WARDEN_ATTACKER_MODEL` | `claude-sonnet-5-5` | Attacker + judge LLM. Bump to `claude-opus-5-5` for harder L7/L8; drop to `claude-haiku-5-5` for cheap batches. |
 | `WARDEN_SLEEP` | `3.5` | Seconds between target chat calls. Lab caps at 20/min — 3.0s is the floor. |
 
 **PAIR / notebook only:**
@@ -126,7 +126,7 @@ list with purposes lives in [`.env.example`](.env.example).
 | `TAP_BRANCH` | `3` | Children per node |
 | `TAP_WIDTH`  | `2` | Survivors per layer |
 | `TAP_DEPTH`  | `3` | Max layers |
-| `TAP_SEED_CAP` | `16` | Max seeds [REDACTED-L6]ed into each attacker brief |
+| `TAP_SEED_CAP` | `16` | Max seeds rendered into each attacker brief |
 
 **GAP:**
 
@@ -136,7 +136,7 @@ list with purposes lives in [`.env.example`](.env.example).
 | `GAP_WIDTH`  | `2` | Survivors per layer |
 | `GAP_DEPTH`  | `3` | Max layers |
 | `GAP_MEMORY_CAP` | `12` | Max nodes kept in shared StrategyMemory |
-| `GAP_SEED_CAP`   | `16` | Max seeds [REDACTED-L6]ed into each attacker brief |
+| `GAP_SEED_CAP`   | `16` | Max seeds rendered into each attacker brief |
 
 **Crescendo:**
 
@@ -144,7 +144,7 @@ list with purposes lives in [`.env.example`](.env.example).
 |---|---|---|
 | `CRESCENDO_TURNS` | `5` | Max turns per benign-to-escalation conversation |
 | `CRESCENDO_EARLY_EXIT` | `1` | Stop when judge rejects 3+ candidates from the same arc |
-| `CRESCENDO_SEED_CAP` | `8` | Max seeds [REDACTED-L6]ed (smaller — transcript already takes brief budget) |
+| `CRESCENDO_SEED_CAP` | `8` | Max seeds rendered (smaller — transcript already takes brief budget) |
 
 ## Drivers at a glance
 
@@ -193,7 +193,7 @@ than the one before it.
   `co-conspirator-defensive-demo`, `persona-jailbreak`, etc.).
 - **[`seedlib.py`](seedlib.py)** — shared loader. `load_seeds(path)`
   reads the JSONL, drops malformed lines and entries missing required
-  keys, returns `list[dict]`. Drivers do their own block-[REDACTED-L6]ing
+  keys, returns `list[dict]`. Drivers do their own block-rendering
   because Crescendo wants different framing than TAP/GAP.
 - **[`build_seeds.py`](build_seeds.py)** — regenerator. Reads
   `warden-corpus.json` + any `manual: true` entries already in
@@ -258,7 +258,7 @@ rebuilds, add `"manual": true`:
 The current corpus has 2 manual entries — the L8 co-conspirator demo
 that actually cracked the canned-refusal trap (and the rejected
 variant alongside, with the lesson). Manual entries can carry richer
-fields than auto-generated ones; the attacker briefs [REDACTED-L6] whichever
+fields than auto-generated ones; the attacker briefs render whichever
 fields are present.
 
 ## Two ways to run PAIR (notebook)
@@ -818,7 +818,7 @@ one verified L8 win (the manual co-conspirator-defensive-demo seed)
 
 - **Crescendo with longer arc**: `CRESCENDO_TURNS=8 python crescendo/crescendo.py 8`
 - **GAP with deeper graph**: `GAP_DEPTH=4 GAP_BRANCH=4 python gap/gap.py 8`
-- **Bump attacker model**: `WARDEN_ATTACKER_MODEL=claude-opus-4-7 python crescendo/crescendo.py 8`
+- **Bump attacker model**: `WARDEN_ATTACKER_MODEL=claude-opus-5-5 python crescendo/crescendo.py 8`
 - **Pattern B**: drive Claude Code conversationally, hand it the
   L8 brief from `tap/tap.py:BRIEFS[8]` and the manual seed, let it
   iterate.
@@ -962,7 +962,7 @@ run them from this directory.
 - [`seedlib.py`](seedlib.py) — seed loader used by all CLI drivers
 - [`build_seeds.py`](build_seeds.py) — regenerator for `seeds.jsonl`
 - [`seeds.jsonl`](seeds.jsonl) — shared seed corpus (cross-level
-  exemplars [REDACTED-L6]ed into every attacker brief)
+  exemplars rendered into every attacker brief)
 - [`deepteam_extras.py`](deepteam_extras.py) — DeepTeam-inspired
   fingerprint probes + curated corpus seeds
 - [`parseltongue.py`](parseltongue.py) — input obfuscation (PAIR-only)
