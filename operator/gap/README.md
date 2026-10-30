@@ -29,7 +29,7 @@ attacker pivots through several different surfaces in layer 1
 (direct ask, persona swap, etymology, letter-association). Under
 TAP, only the survivors' kids learn anything; under GAP, even the
 two pruned siblings' "what didn't work" insights shape the next
-layer. The empirical effect is fewer wasted attempts on dead
+layer. The [REDACTED-L4] effect is fewer wasted attempts on dead
 surfaces and faster convergence on the live one.
 
 ## How the graph layer works
@@ -37,7 +37,7 @@ surfaces and faster convergence on the live one.
 `StrategyMemory` is a bounded list of `GraphNode`s — capped at 12
 by default (`GAP_MEMORY_CAP`) so the attacker's user message can't
 grow unbounded across deep trees. When over the cap, the highest-
-scoring entries survive. The attacker's user body is [REDACTED-L6]ed with
+scoring entries survive. The attacker's user body is rendered with
 two distinct context blocks:
 
 1. **PATH SO FAR** — direct ancestry from root to this node. Same
@@ -64,9 +64,9 @@ whole frontier instead of treating them as direct path elements.
   heuristic.
 - **No off-topic pruning.** The brief constrains the attacker
   enough that off-topic prompts almost never happen.
-- **First-parent-only path [REDACTED-L6]ing.** GAP nodes can technically
+- **First-parent-only path rendering.** GAP nodes can technically
   have multiple parents (convergent branching), but for path
-  [REDACTED-L6]ing we follow the first parent — the one whose layer-K
+  rendering we follow the first parent — the one whose layer-K
   survival actually expanded into this node. The graph memory
   captures the rest.
 
@@ -93,7 +93,7 @@ Env vars match TAP's where they overlap, with one new knob:
 | `WARDEN_BASE`           | `https://warden.scalingsuccess.io` | Lab URL |
 | `WARDEN_PASSCODE`       | unset | CF-Access passcode (unset = local mode) |
 | `ANTHROPIC_API_KEY`     | unset | Required |
-| `WARDEN_ATTACKER_MODEL` | `claude-sonnet-4-6` | Attacker + judge LLM |
+| `WARDEN_ATTACKER_MODEL` | `claude-sonnet-5-5` | Attacker + judge LLM |
 | `WARDEN_SLEEP`          | `3.5` | Seconds between target calls |
 | `GAP_BRANCH`            | `3`   | Children per node |
 | `GAP_WIDTH`             | `2`   | Survivors per layer |

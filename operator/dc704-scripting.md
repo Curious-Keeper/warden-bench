@@ -128,7 +128,7 @@ import httpx
 import time
 
 PASSCODE = "<get from Brian at the door>"
-BASE = "https://warden.scalingsuccess.io"
+BASE = "http://127.0.0.1:8000"
 
 cookies = {"ws_gate": PASSCODE}
 
